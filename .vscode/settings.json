@@ -1,0 +1,132 @@
+{
+  // This no longer requires an extension
+  "editor.bracketPairColorization.enabled": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": false,
+    "source.organizeImports": true
+  },
+  "dotnet-test-explorer.runInParallel": true,
+  // Looks like detecting changes makes the save slower
+  "editor.formatOnSaveMode": "file",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.semanticHighlighting.enabled": true,
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+  "[typescript]": {
+    "editor.semanticHighlighting.enabled": false
+  },
+  "[typescriptreact]": {
+    "editor.semanticHighlighting.enabled": false
+  },
+  "prettier.enable": true,
+  "prettier.useEditorConfig": false,
+  // We define our own tasks, currently we have build and watch
+  "task.autoDetect": "off",
+  "eslint.codeActionsOnSave.mode": "all",
+  "eslint.run": "onType",
+  "eslint.options": {
+    "fix": true
+  },
+  "eslint.lintTask.enable": false,
+  "eslint.format.enable": false,
+  "eslint.trace.server": "off",
+  "eslint.debug": false,
+  "eslint.useESLintClass": true,
+  "omnisharp.useModernNet": true,
+  "omnisharp.enableImportCompletion": true,
+  "omnisharp.enableRoslynAnalyzers": true,
+  "omnisharp.organizeImportsOnFormat": true,
+  "omnisharp.enableAsyncCompletion": true,
+  "omnisharp.enableEditorConfigSupport": true,
+  "omnisharp.useEditorFormattingSettings": false,
+  "omnisharp.enableMsBuildLoadProjectsOnDemand": false,
+  "omnisharp.useGlobalMono": "never",
+  "omnisharp.loggingLevel": "warning",
+  "omnisharp.projectLoadTimeout": 120,
+  "roslynator.autoUpdateOmnisharpJson": true,
+  "csharp.format.enable": true,
+  "csharp.semanticHighlighting.enabled": true,
+  "typescript.preferences.includePackageJsonAutoImports": "auto",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.autoClosingTags": true,
+  "typescript.tsc.autoDetect": "off",
+  "typescript.preferences.useAliasesForRenames": false,
+  // Material UI has known TypeScript slowness issues
+  // These are some workarounds from the known issue https://github.com/microsoft/TypeScript/issues/34801
+  // They don't fully fix the issue
+  "typescript.workspaceSymbols.scope": "currentProject",
+  "typescript.tsserver.useSyntaxServer": "never",
+  "typescript.tsserver.maxTsServerMemory": 8192,
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  // ESLint and prettier would take care of most of that
+  "typescript.reportStyleChecksAsWarnings": false,
+  "typescript.format.enable": false,
+  "typescript.validate.enable": true,
+  "typescript.suggest.includeCompletionsWithSnippetText": false,
+  "typescript.tsserver.watchOptions": {
+    "excludeDirectories": ["node_modules/", "**/.*/"],
+    // Attempting to reduce TypeScript node processes
+    // Based on issues linked in https://github.com/facebook/create-react-app/issues/7070#issuecomment-494129292
+    "fallbackPolling": "dynamicPriorityPolling",
+    "watchFile": "useFsEvents",
+    "synchronousWatchDirectory": true,
+    "watchDirectory": "useFsEvents"
+  },
+  "files.exclude": {
+    // VSCode Defaults
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    // Extras
+    "**/[Bb]in": true,
+    "**/[Oo]bj": true,
+    "**/[Dd]ebug": true,
+    "**/*.orig": true,
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true,
+    "**/.vs": true,
+    "build": true,
+    "temp": true
+  },
+  "files.watcherExclude": {
+    // VSCode Defaults
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true,
+    "**/.hg/store/**": true,
+    // Extras
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/[Bb]in": true,
+    "**/[Oo]bj": true,
+    "**/[Dd]ebug": true,
+    "**/*.orig": true,
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true,
+    "**/.vs": true,
+    "build": true,
+    "temp": true
+  },
+  // Allow renaming close tage in HTML when you modify opening tag
+  "editor.linkedEditing": true,
+  // Dark theme breaks the draw.io files in the repository, so we force it to light
+  "hediet.vscode-drawio.theme": "min"
+}

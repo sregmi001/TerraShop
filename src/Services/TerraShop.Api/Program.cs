@@ -18,7 +18,7 @@ builder.Services.AddSwaggerGen(options =>
                                    );
 });
 string? connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddTerraShopServices();
+builder.Services.AddTerraShopServices(connectionString);
 
 var app = builder.Build();
 

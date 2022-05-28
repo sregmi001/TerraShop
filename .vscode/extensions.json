@@ -1,0 +1,20 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "styled-components.vscode-styled-components",
+    "josefpihrt-vscode.roslynator",
+    "bmalehorn.shell-syntax",
+    "pflannery.vscode-versionlens",
+    "formulahendry.dotnet-test-explorer",
+    "formulahendry.auto-complete-tag",
+    "fakesharper.fakesharper",
+    "tobias-sekan.solutionextension",
+    "fernandoescolar.vscode-solution-explorer",
+    "ms-vscode.test-adapter-converter",
+    "adrianwilczynski.namespace",
+    "reflectiondm.classynaming",
+    "hediet.vscode-drawio",
+  ]
+}

@@ -37,8 +37,13 @@ namespace TerraShop.ShoppingCart.Data
             modelBuilder.Entity<BasketItem>().HasKey(b => b.Id);
             modelBuilder.Entity<BasketItem>().Property(b => b.Id).HasConversion(basketItemIdConverter);
             modelBuilder.Entity<BasketItem>().Property(b => b.ProductId).HasConversion(productIdConverter);
-            modelBuilder.Entity<BasketItem>().Property(b => b.BasketId).HasConversion(basketIdConverter);            
+            modelBuilder.Entity<BasketItem>().Property(b => b.BasketId).HasConversion(basketIdConverter);
             modelBuilder.Entity<BasketItem>().OwnsOne(b => b.UnitPrice);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            _ = optionsBuilder.UseSnakeCaseNamingConvention();
         }
     }
 }

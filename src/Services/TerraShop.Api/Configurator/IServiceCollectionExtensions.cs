@@ -8,9 +8,9 @@ namespace TerraShop.Api.Configurator
 {
     public static class IServiceCollectionExtensions
     {
-        public static IServiceCollection AddTerraShopServices(this IServiceCollection services)
+        public static IServiceCollection AddTerraShopServices(this IServiceCollection services, string connectionString)
         {
-            services.AddDbContext<ShoppingCartDbContext>(options => options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
+            services.AddDbContext<ShoppingCartDbContext>(options => options.UseNpgsql(connectionString));
             services.AddScoped<ICatalogRepository, CatalogRepository>();
             services.AddAutoMapper(typeof(Program));
             services.AddMediatR(typeof(Program));
@@ -18,5 +18,5 @@ namespace TerraShop.Api.Configurator
             return services;
         }
     }
-    
+
 }
