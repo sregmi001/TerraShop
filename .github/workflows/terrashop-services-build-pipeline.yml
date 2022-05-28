@@ -1,0 +1,36 @@
+name: TerraShop.Services
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "src/Services**"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build & Test
+    env:
+      SERVICE_PATH: src/Services
+      SOLUTION_FILE: src/Services/TerraShop.sln
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Setup dotnet
+        uses: actions/setup-node@v1
+
+      - name: Code Build
+        run: |
+          dotnet restore ${{ env.SOLUTION_FILE }}
+          dotnet build --configuration Release --no-restore ${{ env.SOLUTION_FILE }}
+
+      - name: Test
+        run: dotnet test --no-restore ${{ env.SOLUTION_FILE }} --logger "trx;LogFileName=test-results.trx"
+
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: Test Results
+          path: ${{ env.SERVICE_PATH }}/*/TestResults/*.trx
+          reporter: dotnet-trx
