@@ -17,8 +17,7 @@ builder.Services.AddSwaggerGen(options =>
                                                    .Replace("+", string.Empty)
                                    );
 });
-string? connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddTerraShopServices(connectionString);
+builder.Services.AddTerraShopServices();
 
 var app = builder.Build();
 
@@ -36,3 +35,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { } // This is required for test

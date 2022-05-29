@@ -33,7 +33,7 @@ namespace TerraShop.Api.Catalog.Query
 
             public async Task<IList<Response>> Handle(Request request, CancellationToken cancellationToken)
             {
-                var result = await _catalogRepository.GetAll();
+                var result = await _catalogRepository.GetAllAsync();
                 return _mapper.Map<IList<Response>>(result);
             }
         }

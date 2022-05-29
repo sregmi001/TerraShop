@@ -1,8 +1,6 @@
 ﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
 using TerraShop.Domain.Catalog;
 using TerraShop.Domain.ShoppingCart;
-using TerraShop.ShoppingCart.Data;
 
 namespace TerraShop.Api.ShoppingCart.Command
 {
@@ -19,29 +17,28 @@ namespace TerraShop.Api.ShoppingCart.Command
 
         public class Handler : IRequestHandler<Request, Unit>
         {
-            private readonly ShoppingCartDbContext _context;
+            private readonly IShoppingCartRepository _shoppingCartRepository;
             private readonly ICatalogRepository _catalogRepository;
 
-            public Handler(ShoppingCartDbContext context, ICatalogRepository catalogRepository)
+            public Handler(IShoppingCartRepository shoppingCartRepository, ICatalogRepository catalogRepository)
             {
-                _context = context;
+                _shoppingCartRepository = shoppingCartRepository;
                 _catalogRepository = catalogRepository;
             }
 
             public async Task<Unit> Handle(Request request, CancellationToken cancellationToken)
             {
-                var basket = await _context.Baskets.FirstOrDefaultAsync(b => b.VisitorId.Value == request.VisitorId);
-                var product = await _catalogRepository.Get(new Domain.Shared.ProductId(request.ProductId));
+                var basket = await _shoppingCartRepository.GetByVisitorIdAsync(new VisitorId(request.VisitorId));
+                var product = await _catalogRepository.GetAsync(new Domain.Shared.ProductId(request.ProductId));
                 
                 if(basket == null)
                 {
                     basket = Basket.Create(new VisitorId(request.VisitorId));
                 }
 
-                basket.AddItem(new Domain.Shared.ProductId(request.ProductId), product.UnitPrice, request.Quantity);
+                basket.AddItem(new Domain.Shared.ProductId(request.ProductId), product!.UnitPrice, request.Quantity);
 
-                await _context.SaveChangesAsync();
-
+                await _shoppingCartRepository.SaveAsync(basket);
                 return Unit.Value;
             }
         }

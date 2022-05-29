@@ -12,11 +12,11 @@ namespace TerraShop.Catalog.Data
             Product.Create(new("b9ecb958-1f34-4517-a357-6443631c10ca"), "Product B", new Money { Value = 20 }),
             Product.Create(new("d22b2a6b-7a55-4069-b841-060946568824"), "Product C", new Money { Value = 30 })
         };
-        public Task<Product> Get(ProductId id) => Task.FromResult(_products.Single(p => p.Id.Value == id.Value));
+        public Task<Product?> GetAsync(ProductId id) => Task.FromResult(_products.SingleOrDefault(p => p.Id.Value == id.Value));
 
-        public Task<ICollection<Product>> GetAll() => Task.FromResult(_products);
+        public Task<ICollection<Product>> GetAllAsync() => Task.FromResult(_products);
 
-        public Task Remove(Product entity)
+        public Task RemoveAsync(Product entity)
         {
             throw new NotImplementedException();
         }

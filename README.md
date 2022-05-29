@@ -4,9 +4,7 @@ First of all why named it TerraShop? - Terra Luna coin recently crashed to ashes
 
 ## Motivation
 
-I was asked to write a simple application following best practices as a part of my interivew process. Best practice is very opinionated term when we dig deeper. Different influencers in this field has different view on it. Some want it to be super minimalistic and just hard code everything until it's not required otherwise. Some says best practice is to write it clean from day one even if it's going to live sometime. I normally take middle ground, however middle ground is sometimes risky you will get flanks for both ends for not being close to either. These interivew tech challenges takes time and if you are like me you have to do it after hours or weekend -i.e. you are stealing time away from your family and kids to give a shot at something where an stranger who may if you are lucky understands your thought process.
-
-If I have it my way, My inclination is to go super minimalistc piece that works and slowly refactor it to an engineering marvel. However I equally value re-usable frameworky or library kind of code that builds up making writing business logic pieces easier. So this repo has both of them.
+I was asked to write a simple application following best practices as a part of my interivew process. Best practice is very opinionated term when we dig deeper. Different influencers in this field has different view on it. End of the day it's doing the right thing best of business priorities long term and short term, making sure your colleagues don't spend days pulling their hair trying to understand your code. I hope my attempt to not over invest time on this but also try to utilise bits that make extension easier hasn't turned into an ugly monster. These interivew tech challenges takes time and if you are like me you have to do it after hours or weekend -i.e. you are stealing time away from your family esp kids to give a shot at something where an stranger who may if you are lucky understands your thought process.
 
 ## Assumptions & Decisions
 
@@ -19,3 +17,8 @@ So this application going to be a monolith but some hints of separations at data
 ### Basket Per Visitor
 
 Server doesn't manage session and a unique visitor identification is resposiblity of client/frontend. For backend, it's a unique guid only.
+
+## What hasn't been done at all
+
+- No front end and no front end tests.
+- Some of the basket functionality is missing.

@@ -16,9 +16,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Setup dotnet
-        uses: actions/setup-node@v1
-
       - name: Code Build
         run: |
           dotnet restore ${{ env.SOLUTION_FILE }}
